@@ -1,0 +1,505 @@
+{
+  "address": "F8ZN7PUv4kQCeVAmCCKsftX3XhycrPqiyqqTgyGtM6DJ",
+  "metadata": {
+    "name": "fair_tix",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "FairTix Smart Contract - NFT Ticketing Protocol"
+  },
+  "instructions": [
+    {
+      "name": "buy_ticket",
+      "discriminator": [
+        11,
+        24,
+        17,
+        193,
+        168,
+        116,
+        164,
+        169
+      ],
+      "accounts": [
+        {
+          "name": "event",
+          "writable": true
+        },
+        {
+          "name": "ticket",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  105,
+                  99,
+                  107,
+                  101,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "event"
+              },
+              {
+                "kind": "account",
+                "path": "event.tickets_sold",
+                "account": "EventState"
+              }
+            ]
+          }
+        },
+        {
+          "name": "ticket_mint",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "buyer_token_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "buyer"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "ticket_mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "buyer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "rent",
+          "address": "SysvarRent111111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "create_event",
+      "discriminator": [
+        49,
+        219,
+        29,
+        203,
+        22,
+        98,
+        100,
+        87
+      ],
+      "accounts": [
+        {
+          "name": "event",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  101,
+                  118,
+                  101,
+                  110,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "organizer"
+              },
+              {
+                "kind": "arg",
+                "path": "name"
+              }
+            ]
+          }
+        },
+        {
+          "name": "organizer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "base_price",
+          "type": "u64"
+        },
+        {
+          "name": "max_price",
+          "type": "u64"
+        },
+        {
+          "name": "royalty_percent",
+          "type": "u8"
+        },
+        {
+          "name": "max_tickets",
+          "type": "u32"
+        },
+        {
+          "name": "resale_cooldown",
+          "type": "i64"
+        }
+      ]
+    },
+    {
+      "name": "resell_ticket",
+      "discriminator": [
+        129,
+        5,
+        148,
+        113,
+        63,
+        25,
+        240,
+        226
+      ],
+      "accounts": [
+        {
+          "name": "event",
+          "writable": true,
+          "relations": [
+            "ticket"
+          ]
+        },
+        {
+          "name": "ticket",
+          "writable": true
+        },
+        {
+          "name": "owner",
+          "writable": true,
+          "relations": [
+            "ticket"
+          ]
+        },
+        {
+          "name": "buyer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "organizer",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "new_price",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "validate_ticket",
+      "discriminator": [
+        222,
+        125,
+        246,
+        215,
+        10,
+        163,
+        159,
+        200
+      ],
+      "accounts": [
+        {
+          "name": "event",
+          "relations": [
+            "ticket"
+          ]
+        },
+        {
+          "name": "ticket",
+          "writable": true
+        },
+        {
+          "name": "organizer",
+          "writable": true,
+          "signer": true
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "EventState",
+      "discriminator": [
+        29,
+        199,
+        55,
+        151,
+        197,
+        35,
+        226,
+        125
+      ]
+    },
+    {
+      "name": "Ticket",
+      "discriminator": [
+        41,
+        228,
+        24,
+        165,
+        78,
+        90,
+        235,
+        200
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "PriceTooHigh",
+      "msg": "El precio de reventa excede el limite permitido."
+    },
+    {
+      "code": 6001,
+      "name": "ResaleTooSoon",
+      "msg": "El Cooldown de reventa aun esta activo."
+    },
+    {
+      "code": 6002,
+      "name": "TooManyResales",
+      "msg": "Este ticket ya ha superado el numero maximo de reventas."
+    },
+    {
+      "code": 6003,
+      "name": "TicketAlreadyUsed",
+      "msg": "Este ticket ya ha sido validado."
+    },
+    {
+      "code": 6004,
+      "name": "Unauthorized",
+      "msg": "No estas autorizado para realizar esta accion."
+    },
+    {
+      "code": 6005,
+      "name": "MathOverflow",
+      "msg": "Error matematico."
+    },
+    {
+      "code": 6006,
+      "name": "InvalidRoyalty",
+      "msg": "Porcentaje de regalia invalido (0-100)."
+    },
+    {
+      "code": 6007,
+      "name": "InvalidTicketSupply",
+      "msg": "Supply maximo de tickets invalido."
+    },
+    {
+      "code": 6008,
+      "name": "InvalidPriceRange",
+      "msg": "Rango de precios de reventa invalido."
+    },
+    {
+      "code": 6009,
+      "name": "PriceTooLow",
+      "msg": "El precio de reventa es demasiado bajo."
+    },
+    {
+      "code": 6010,
+      "name": "MaxResalePriceExceeded",
+      "msg": "El precio de reventa excede el maximo permitido."
+    }
+  ],
+  "types": [
+    {
+      "name": "EventState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "organizer",
+            "type": "pubkey"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "base_price",
+            "type": "u64"
+          },
+          {
+            "name": "max_resale_price",
+            "type": "u64"
+          },
+          {
+            "name": "royalty_percent",
+            "type": "u8"
+          },
+          {
+            "name": "max_tickets",
+            "type": "u32"
+          },
+          {
+            "name": "tickets_sold",
+            "type": "u32"
+          },
+          {
+            "name": "resale_cooldown",
+            "type": "i64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Ticket",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "event",
+            "type": "pubkey"
+          },
+          {
+            "name": "price_paid",
+            "type": "u64"
+          },
+          {
+            "name": "resale_count",
+            "type": "u8"
+          },
+          {
+            "name": "last_transfer_time",
+            "type": "i64"
+          },
+          {
+            "name": "is_used",
+            "type": "bool"
+          },
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ]
+}

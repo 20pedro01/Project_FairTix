@@ -1,0 +1,10 @@
+{
+  "idl": "anchor/target/idl/fair_tix.json",
+  "out": "src/generated/fair_tix",
+  "name": "fair_tix",
+  "options": {
+    "format": "typescript",
+    "useCpi": true,
+    "pdaEncoding": "utf8"
+  }
+}

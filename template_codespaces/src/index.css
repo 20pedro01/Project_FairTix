@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+/* Configuración de Tema para Tailwind v4 */
+@theme {
+  --color-bg-dark: #09090b;
+  --color-accent-purple: #9945ff;
+  --color-accent-blue: #14f195;
+}
+
+/* Base y estilos globales */
+@layer base {
+  body {
+    background: radial-gradient(circle at top right, rgba(153, 69, 255, 0.15), transparent),
+                radial-gradient(circle at bottom left, rgba(20, 241, 149, 0.1), transparent),
+                #09090b;
+    @apply text-white selection:bg-purple-500/30;
+    min-height: 100vh;
+  }
+}
+
+/* Utilidades personalizadas con el nuevo estándar @utility */
+@utility glass-card {
+  @apply backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl shadow-2xl;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    @apply border-white/20 bg-white/10 shadow-purple-500/20;
+    transform: translateY(-4px);
+  }
+}
+
+@utility btn-primary {
+  @apply px-6 py-3 rounded-xl font-bold transition-all duration-300 active:scale-95;
+  background: linear-gradient(135deg, #9945ff 0%, #14f195 100%);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  &:hover {
+    @apply shadow-lg shadow-purple-500/30;
+    filter: brightness(1.1);
+  }
+}
+
+@utility input-glass {
+  @apply bg-black/40 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-purple-500/50 transition-all;
+}
+
+/* Animaciones */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full hover:bg-white/20;
+}
