@@ -17,8 +17,8 @@
 
 ## 🛠️ Stack Tecnológico
 - **Blockchain:** Solana (Devnet)
-- **Smart Contracts:** Rust & Anchor Framework
-- **Frontend:** React + TypeScript + Vite
+- **Smart Contracts:** Rust & Anchor Framework (En `template_codespaces/anchor`)
+- **Frontend:** React + TypeScript + Vite (En `template_codespaces/src`)
 - **Estilos:** TailwindCSS / CSS Modules
 - **Herramientas:** Solana CLI, Codama (IDL generation)
 
@@ -31,7 +31,7 @@ Si estás usando el entorno de **Codespaces**, sigue estos pasos para desplegar 
 ### 1. Preparar el entorno
 Asegúrate de tener activa la ruta de Solana en tu terminal:
 ```bash
-core@20pedro01:~$ export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
+export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
 ```
 
 ### 2. Instalación de dependencias
@@ -44,13 +44,15 @@ npm install
 ### 3. Compilación y Despliegue (Blockchain)
 Para compilar el programa de Solana y subirlo a la **Devnet**:
 ```bash
+cd anchor
 anchor build
 anchor deploy
 ```
 
 ### 4. Ejecución del Frontend
-Levanta el servidor local para interactuar con la app:
+Levanta el servidor local para interactuar con la app (regresa a `template_codespaces` si estabas en `anchor`):
 ```bash
+# Si estas en anchor: cd ..
 npm run dev
 ```
 La aplicación estará disponible en: `http://localhost:5173`
@@ -58,9 +60,9 @@ La aplicación estará disponible en: `http://localhost:5173`
 ---
 
 ## 📂 Estructura del Proyecto
-- `/anchor`: Contiene el código fuente en **Rust** de los programas on-chain.
-- `/template_codespaces`: Contiene el **Frontend** (React, Hooks de conexión, UI).
-- `/src/generated`: Archivos IDL generados automáticamente para la comunicación con la blockchain.
+- `template_codespaces/anchor`: Contiene el código fuente en **Rust** de los programas on-chain.
+- `template_codespaces/src`: Contiene el **Frontend** (React, Hooks de conexión, UI).
+- `template_codespaces/src/generated`: Archivos IDL generados automáticamente para la comunicación con la blockchain.
 
 ---
 
