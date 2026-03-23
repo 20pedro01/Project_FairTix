@@ -1,4 +1,4 @@
-# 🎟️ FairTix - Solana Event Ticketing System
+# FairTix - Solana Event Ticketing System
 
 **FairTix** es una plataforma descentralizada construida sobre la blockchain de **Solana** que permite la creación y gestión de eventos mediante tickets digitales seguros y transparentes. Utiliza el poder de los Smart Contracts (programas on-chain) para garantizar que cada entrada sea única y verificable.
 
@@ -7,24 +7,24 @@
 
 ---
 
-## 🔥 Características Principales
+## Características principales:
 - **Creación de Eventos On-chain:** Los organizadores pueden registrar eventos directamente en la blockchain de Solana.
 - **Tickets Seguros:** Cada ticket está vinculado a una transacción verificable, evitando la duplicidad y el fraude.
-- **Integración con Phantom/Solflare:** Conexión fluida con las wallets líderes del ecosistema.
-- **Arquitectura Escalable:** Desarrollado con el framework **Anchor** para máxima seguridad y eficiencia.
+- **Integración con Phantom/Solflare:** Conexión fluida con wallets líderes del ecosistema.
+- **Arquitectura escalable:** Desarrollado con el framework **Anchor** para máxima seguridad y eficiencia.
 
 ---
 
-## 🛠️ Stack Tecnológico
+## 🛠️ Stack tecnológico
 - **Blockchain:** Solana (Devnet)
-- **Smart Contracts:** Rust & Anchor Framework (En `template_codespaces/anchor`)
+- **Smart Contracts:** Rust & Anchor Framework (En `template_codespaces/anchor/programs/fair_tix/src`)
 - **Frontend:** React + TypeScript + Vite (En `template_codespaces/src`)
 - **Estilos:** TailwindCSS / CSS Modules
 - **Herramientas:** Solana CLI, Codama (IDL generation)
 
 ---
 
-## 🚀 Guía de Inicio Rápido
+## Guía de inicio rápido
 
 Si estás usando el entorno de **Codespaces**, sigue estos pasos para desplegar y probar la aplicación:
 
@@ -41,7 +41,7 @@ cd template_codespaces
 npm install
 ```
 
-### 3. Compilación y Despliegue (Blockchain)
+### 3. Compilación y despliegue (Blockchain)
 Para compilar el programa de Solana y subirlo a la **Devnet**:
 ```bash
 cd anchor
@@ -49,7 +49,7 @@ anchor build
 anchor deploy
 ```
 
-### 4. Ejecución del Frontend
+### 4. Ejecución del frontend
 Levanta el servidor local para interactuar con la app (regresa a `template_codespaces` si estabas en `anchor`):
 ```bash
 # Si estas en anchor: cd ..
@@ -59,16 +59,15 @@ La aplicación estará disponible en: `http://localhost:5173`
 
 ---
 
-## 📂 Estructura del Proyecto
-- `template_codespaces/anchor`: Contiene el código fuente en **Rust** de los programas on-chain.
+## 📂 Estructura del proyecto
+- `template_codespaces/anchor/programs/fair_tix/src`: Contiene el código fuente en **Rust** de los programas on-chain.
 - `template_codespaces/src`: Contiene el **Frontend** (React, Hooks de conexión, UI).
 - `template_codespaces/src/generated`: Archivos IDL generados automáticamente para la comunicación con la blockchain.
 
 ---
 
 ## 👤 Autor
-- **Pedro** (@20pedro01) - *FullStack Developer*
-
+- **Pedro** (@20pedro01)
 ---
 
 > [!TIP]
