@@ -5,6 +5,7 @@ echo "========================================"
 echo "🚀 Configurando entorno Solana local"
 echo "========================================"
 
+
 # Verificar si estamos en Linux/Mac
 if [[ "$OSTYPE" != "linux-gnu"* && "$OSTYPE" != "darwin"* ]]; then
     echo "⚠️  Este script está diseñado para Linux/Mac. Para Windows usa WSL2."
